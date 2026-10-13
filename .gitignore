@@ -1,0 +1,50 @@
+# Build and local tooling
+/target/
+/dist/
+__pycache__/
+*.py[cod]
+.DS_Store
+/.idea/
+/.vscode/
+
+# Environment and credentials; intentionally no exception for example env files
+.env
+.env.*
+*.env
+*.env.*
+/secrets/
+**/secrets/
+/credentials/
+**/credentials/
+credentials
+credentials.*
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+*.age
+id_rsa*
+id_ed25519*
+
+# Runtime state and backups
+/relay-data/
+/guardian-data/
+/owner-data/
+/recipient-data/
+**/seed.hex*
+**/seed.txt
+**/mnemonic*
+**/wallet*/
+**/wallet*.dat
+**/wallet*.db*
+*.sqlite*
+*.db*
+*.log
+*.bak
+*.backup
+*.tmp
+
+# Public deterministic fixtures under docs/test-vectors are intentional.
+# Ignore rules are a guardrail, not a secret scanner.

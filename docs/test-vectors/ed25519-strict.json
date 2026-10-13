@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "accept": true,
+      "message": "7a65637265742f7631007374726963742070726f66696c6520766563746f72",
+      "name": "valid",
+      "public_key": "ea4a6c63e29c520abef5507b132ec5f9954776aebebe7b92421eea691446d22c",
+      "reason": "canonical R and S, equation holds",
+      "signature": "b09ecbf0e1441fb5d6b44879e768d54006b22aff7f817e40b69fcf879bec8a1a4bcccc4ef86697cc6568d6379fdeaf3713337c3908957529ac666ba9f492cf0c"
+    },
+    {
+      "accept": false,
+      "message": "616e6f74686572206d657373616765",
+      "name": "wrong_equation",
+      "public_key": "ea4a6c63e29c520abef5507b132ec5f9954776aebebe7b92421eea691446d22c",
+      "reason": "signature of a different message: [S]B != R + [k]A",
+      "signature": "b09ecbf0e1441fb5d6b44879e768d54006b22aff7f817e40b69fcf879bec8a1a4bcccc4ef86697cc6568d6379fdeaf3713337c3908957529ac666ba9f492cf0c"
+    },
+    {
+      "accept": false,
+      "message": "7a65637265742f7631007374726963742070726f66696c6520766563746f72",
+      "name": "s_not_reduced",
+      "public_key": "ea4a6c63e29c520abef5507b132ec5f9954776aebebe7b92421eea691446d22c",
+      "reason": "S + l: same scalar mod l, but S >= l",
+      "signature": "b09ecbf0e1441fb5d6b44879e768d54006b22aff7f817e40b69fcf879bec8a1a38a0c2ab12caa9243c05ceda7dd88e4c13337c3908957529ac666ba9f492cf1c"
+    },
+    {
+      "accept": false,
+      "message": "7a65637265742f7631007374726963742070726f66696c6520766563746f72",
+      "name": "r_small_order_equation_holds",
+      "public_key": "ea4a6c63e29c520abef5507b132ec5f9954776aebebe7b92421eea691446d22c",
+      "reason": "R is the identity (small order); S = k*a so the cofactorless equation holds",
+      "signature": "0100000000000000000000000000000000000000000000000000000000000000764b2c7c088646d04f8952a7edfa794162b2c2539ffbd1c3c24d9d93fc602208"
+    },
+    {
+      "accept": false,
+      "message": "7a65637265742f7631007374726963742070726f66696c6520766563746f72",
+      "name": "r_non_canonical_equation_holds",
+      "public_key": "ea4a6c63e29c520abef5507b132ec5f9954776aebebe7b92421eea691446d22c",
+      "reason": "R encodes the identity non-canonically (x = 0 with sign bit); equation holds",
+      "signature": "0100000000000000000000000000000000000000000000000000000000000080206b6fd10a5e659f19543c45c8f01f93e5b173e5f3ca8c7bf5969dc1793e0d0c"
+    },
+    {
+      "accept": false,
+      "message": "7a65637265742f7631007374726963742070726f66696c6520766563746f72",
+      "name": "a_small_order",
+      "public_key": "0100000000000000000000000000000000000000000000000000000000000000",
+      "reason": "public key is the identity: rejected by the key profile",
+      "signature": "b09ecbf0e1441fb5d6b44879e768d54006b22aff7f817e40b69fcf879bec8a1a4bcccc4ef86697cc6568d6379fdeaf3713337c3908957529ac666ba9f492cf0c"
+    }
+  ],
+  "note": "accept = verdict of the full strict profile: key profile, canonical R not of small order, S < l, cofactorless equation",
+  "spec": "docs/envelope-v0.md, «Профиль Ed25519»"
+}
